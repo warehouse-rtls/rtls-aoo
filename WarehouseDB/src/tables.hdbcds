@@ -1,0 +1,13 @@
+namespace IC2019.WarehouseDB;
+
+context tables {
+
+    /*@@layout{"layoutInfo":{"x":-117,"y":-222.5}}*/
+    entity Location {
+        key tagID   : String(10);
+            x       : Integer;
+            y       : Integer;
+            z       : Integer;
+            quality : Integer;
+    };
+};

@@ -1,0 +1,14 @@
+{
+  "welcomeFile": "/WarehouseUI/index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^/WarehouseUI/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    }
+  ]
+}

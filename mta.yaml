@@ -1,0 +1,53 @@
+ID: IC2019
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: WarehouseUI
+   type: html5
+   path: WarehouseUI
+   parameters:
+      disk-quota: 256M
+      memory: 256M
+   build-parameters:
+      builder: grunt
+   requires:
+    - name: uaa_IC2019
+    - name: dest_IC2019
+
+
+ - name: WarehouseDB
+   type: hdb
+   path: WarehouseDB
+   requires:
+    - name: hdi_WarehouseDB
+
+
+ - name: WarehouseJS
+   type: nodejs
+   path: WarehouseJS
+   provides:
+    - name: WarehouseJS_api
+      properties:
+         url: ${default-url}
+
+resources:
+ - name: uaa_IC2019
+   parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+   type: org.cloudfoundry.managed-service
+
+ - name: dest_IC2019
+   parameters:
+      service-plan: lite
+      service: destination
+   type: org.cloudfoundry.managed-service
+
+
+ - name: hdi_WarehouseDB
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
